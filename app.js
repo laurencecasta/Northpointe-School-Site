@@ -1,8 +1,15 @@
 const express = require('express');
 const { readFile } = require('fs').promises;
 const path = require('path');
+const pino = require('pino');
+const expressPino = require('express-pino-logger');
+
+const logger = pino({ level: process.env.LOG_LEVEL || 'info' });
+const expressLogger = expressPino({ logger });
 
 const app = express();
+
+app.use(expressLogger);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -19,5 +26,5 @@ app.get('/contact', async (req, res) => {
 });
 
 app.listen(8080, () => {
-  console.log('App available on http://localhost:8080');
+  logger.info('App available on http://localhost:8080');
 });
