@@ -21,6 +21,18 @@ app.get('/about', async (req, res) => {
   res.send(await readFile('./views/about.html', 'utf8'));
 });
 
+app.get('/tuition', async (req, res) => {
+  res.send(await readFile('./views/tuition.html', 'utf8'))
+});
+
+app.get('/faq', async (req, res) => {
+  res.send(await readFile('./views/faq.html', 'utf8'))
+});
+
+app.get('/apply', async (req, res) => {
+  res.send(await readFile('./views/apply.html', 'utf8'))
+});
+
 app.get('/contact', async (req, res) => {
   res.send(await readFile('./views/contact.html', 'utf8'));
 });
