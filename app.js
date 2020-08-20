@@ -56,8 +56,8 @@ app.post("/sent", async (req, res) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "larrycasta11@gmail.com", // generated ethereal user
-      pass: "Goodjourney1209", // generated ethereal password
+      user: "larrycasta11@gmail.com",
+      pass: "Goodjourney1209",
     },
     tls: {
       rejectUnauthorized: false,
