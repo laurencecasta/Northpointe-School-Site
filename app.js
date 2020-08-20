@@ -42,12 +42,64 @@ app.get("/contact", async (req, res) => {
 // Post route for application submission
 app.post("/sent", async (req, res) => {
   const output = `
-    <p>Here is the student application information</p>
-    <h3>Applitcation Info</h3>
-
-    <ul>
-      <li>First Name: ${req.body["first-name"]}</li>
-    </ul>
+  <body style="background: #fcf5ff">
+  <h1 style="color: #9c79e4;">You Have a New Application for Enrollment!</h1>
+    
+  <h2>Application Info...</h2>
+  
+  <h3 style="color: #9c79e4;">Student Info</h3>
+  <ul style="list-style-type: none;">
+    <li>First Name: ${req.body["first-name"]}</li>
+    <li>Last Name: ${req.body["last-name"]}</li>
+    <li>Date of Birth: ${req.body.birthday}</li>
+    <li>Address Line 1: ${req.body.address1}</li>
+    <li>Address Line 2: ${req.body.address2}</li>
+    <li>Student's Cell Phone: ${req.body.phone}</li>
+    <li>Student's Email: ${req.body.email}</li>
+    <li>Last Grade Completed: ${req.body.grade}</li>
+    <li>Last School: ${req.body.school}</li>
+    <li>Allergies: ${req.body.allergies}</li>
+    <li>Medicines: ${req.body.medicines}</li>
+  </ul>
+  
+  <h3 style="color: #9c79e4;">Parent/Guardian Info</h3>
+  <ul style="list-style-type: none;">
+    <li>First Name: ${req.body["pfirst-name"]}</li>
+    <li>Last Name: ${req.body["plast-name"]}</li>
+    <li>Address Line 1: ${req.body.paddress1}</li>
+    <li>Address Line 2: ${req.body.paddress2}</li>
+    <li>Cell Phone: ${req.body["pcell-phone"]}</li>
+    <li>Work Phone: ${req.body["pwork-phone"]}</li>
+    <li>Home Phone: ${req.body["phome-phone"]}</li>
+    <li>Email: ${req.body.pemail}</li>
+  </ul>
+  
+  <h3 style="color: #9c79e4;">Person Responsible for Tuition</h3>
+  <ul style="list-style-type: none;">
+    <li>First Name: ${req.body["tirst-name"]}</li>
+    <li>Last Name: ${req.body["tlast-name"]}</li>
+    <li>Address Line 1: ${req.body.taddress1}</li>
+    <li>Address Line 1: ${req.body.taddress2}</li>
+    <li>Cell Phone: ${req.body["tcell-phone"]}</li>
+    <li>Email: ${req.body.temail}</li>
+  </ul>
+  
+  <h3 style="color: #9c79e4;">Student Pickup</h3>
+  <ul style="list-style-type: none;">
+    <li>People Permitted to Pickup: ${req.body.pickup}</li>
+  </ul>
+  
+  <h3 style="color: #9c79e4;">Additional Info</h3>
+  <ul style="list-style-type: none;">
+    <li><strong>Describe Your Student's Strengths and Weaknesses:</strong><br><br>${req.body.strengths}</li>
+    <br>
+    <li><strong>Why are you interested in enrolling your student in this program?:</strong><br><br>${req.body.interest}</li>
+    <br>
+    <li><strong>What are you hoping your child will get out of their time at NPCS?:</strong><br><br>${req.body.hope}</li>
+    <br>
+    <li><strong>NPCS is a teacher-parent partnership. How will you keep your child on track in their studies on the days they are not on campus?:</strong><br><br>${req.body.partnership}</li>
+  </ul>
+  </body>
   `;
 
   // create reusable transporter object using the default SMTP transport
@@ -56,8 +108,8 @@ app.post("/sent", async (req, res) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "larrycasta11@gmail.com",
-      pass: "Goodjourney1209",
+      user: "laurence.d.castaneda@gmail.com",
+      pass: "Yummyfood11",
     },
     tls: {
       rejectUnauthorized: false,
@@ -66,10 +118,10 @@ app.post("/sent", async (req, res) => {
 
   // setup email data with unicode symbols
   const mailOptions = {
-    from: '"Nodemailer Contact" <larrycasta11@gmail.com>', // sender address
+    from: '"NPCS Application Email" <laurence.d.castaneda@gmail.com>', // sender address
     to: "laurence@theexchangechurch.org", // list of receivers
-    subject: "Node Contact Request", // Subject line
-    text: "Hello world?", // plain text body
+    subject: `NPCS Application from ${req.body["first-name"]} ${req.body["last-name"]}`, // Subject line
+    text: "", // plain text body
     html: output, // html body
   };
 
