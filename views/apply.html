@@ -9,7 +9,8 @@
 		<title>Apply</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 	</head>
 	<body class="subpage">
 
@@ -32,13 +33,14 @@
 			</div>
 		</header>
 
-        <!-- Three -->
+      <!-- Three -->
+      <form method="POST" action="/sent" id="apply">
         <section id="one" class="wrapper">
             <div class="inner">
                 <header class="align-center">
                     <h2>APPLY NOW</h2>
                 </header>
-                <form method="post" action="#" id="apply">
+                <form method="POST" action="send" id="apply">
                 <h3>Student Info</h3>
                     <div class="row uniform">
                         <div class="6u 12u$(xsmall)">
@@ -130,7 +132,6 @@
                         </div>
                     </div>
                 <h3>Person Responsible for Tuition</h3>
-                <form method="post" action="#">
                     <div class="row uniform">
                         <div class="6u$ 12u$(small)">
                             <input type="checkbox" id="sametuition" name="sametuition">
@@ -184,18 +185,17 @@
                             <textarea name="partnership" id="partnership" placeholder="Type here" rows="4"></textarea>
                         </div>
                     </div>
-                </form>
             </div>
             <section id="three">
 				<div class="inner">
 					<div class="flex">
 						<div class="box alt">
-                            <button class="button special big" type="submit" form="apply" value="SUBMIT">SUBMIT</button>
+                <button class="button special big" type="submit" form="apply" value="SUBMIT">SUBMIT</button>
 						</div>
 					</div>
 				</div>
-			</section>
-        </section>
+      </section>
+      </form>
 
 		<!-- Footer -->
 			<footer id="footer">
