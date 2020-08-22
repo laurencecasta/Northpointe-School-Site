@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const { readFile } = require("fs").promises;
 const path = require("path");
+const debug = require("debug")("http");
 
 const app = express();
 
@@ -128,14 +129,14 @@ app.post("/sent", async (req, res) => {
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      return debug(error);
     }
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    debug("Message sent: %s", info.messageId);
+    debug("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   });
   res.send(await readFile("./views/sent.html", "utf8"));
 });
 
-app.listen(8080, () => {
-  console.log("App available on http://localhost:8080");
+app.listen(4000, () => {
+  debug("Listening on http://localhost:4000");
 });
