@@ -17,26 +17,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", async (req, res) => {
+  debug('GET index');
   res.send(await readFile("./views/index.html", "utf8"));
 });
 
 app.get("/about", async (req, res) => {
+  debug('GET about page');
   res.send(await readFile("./views/about.html", "utf8"));
 });
 
 app.get("/tuition", async (req, res) => {
+  debug('GET tuition info page');
   res.send(await readFile("./views/tuition.html", "utf8"));
 });
 
 app.get("/faq", async (req, res) => {
+  debug('GET faq page');
   res.send(await readFile("./views/faq.html", "utf8"));
 });
 
 app.get("/apply", async (req, res) => {
+  debug('GET apply page');
   res.send(await readFile("./views/apply.html", "utf8"));
 });
 
 app.get("/contact", async (req, res) => {
+  debug('GET contact page');
   res.send(await readFile("./views/contact.html", "utf8"));
 });
 
@@ -67,8 +73,8 @@ app.post("/sent", async (req, res) => {
   <ul style="list-style-type: none;">
     <li>First Name: ${req.body["pfirst-name"]}</li>
     <li>Last Name: ${req.body["plast-name"]}</li>
-    <li>Address Line 1: ${req.body.paddress1}</li>
-    <li>Address Line 2: ${req.body.paddress2}</li>
+    <li>Address Line 1: ${req.body.sameaddress === 'on' ? req.body.address1 : req.body.paddress1}</li>
+    <li>Address Line 2: ${req.body.sameaddress === 'on' ? req.body.address2 : req.body.paddress2}</li>
     <li>Cell Phone: ${req.body["pcell-phone"]}</li>
     <li>Work Phone: ${req.body["pwork-phone"]}</li>
     <li>Home Phone: ${req.body["phome-phone"]}</li>
@@ -77,12 +83,12 @@ app.post("/sent", async (req, res) => {
   
   <h3 style="color: #9c79e4;">Person Responsible for Tuition</h3>
   <ul style="list-style-type: none;">
-    <li>First Name: ${req.body["tirst-name"]}</li>
-    <li>Last Name: ${req.body["tlast-name"]}</li>
-    <li>Address Line 1: ${req.body.taddress1}</li>
-    <li>Address Line 1: ${req.body.taddress2}</li>
-    <li>Cell Phone: ${req.body["tcell-phone"]}</li>
-    <li>Email: ${req.body.temail}</li>
+    <li>First Name: ${req.body.sametuition === 'on' ? req.body["pfirst-name"] : req.body["tfirst-name"]}</li>
+    <li>Last Name: ${req.body.sametuition === 'on' ? req.body["plast-name"] : req.body["tlast-name"]}</li>
+    <li>Address Line 1: ${req.body.sametuition === 'on' ? (req.body.address1 || req.body.paddress1) : req.body.taddress1}</li>
+    <li>Address Line 1: ${req.body.sametuition === 'on' ? (req.body.address2 || req.body.paddress2) : req.body.taddress2}</li>
+    <li>Cell Phone: ${req.body.sametuition === 'on' ? req.body["pcell-phone"] || req.body["pwork-phone"] || req.body["phome-phone"] : req.body["tcell-phone"]}</li>
+    <li>Email: ${req.body.sametuition === 'on' ? req.body.pemail : req.body.temail}</li>
   </ul>
   
   <h3 style="color: #9c79e4;">Student Pickup</h3>
@@ -100,6 +106,7 @@ app.post("/sent", async (req, res) => {
     <br>
     <li><strong>NPCS is a teacher-parent partnership. How will you keep your child on track in their studies on the days they are not on campus?:</strong><br><br>${req.body.partnership}</li>
   </ul>
+  <br>
   </body>
   `;
 

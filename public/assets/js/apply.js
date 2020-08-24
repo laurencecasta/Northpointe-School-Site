@@ -28,6 +28,7 @@ const form = (() => {
 
 // module to handle logic
 
+// eslint-disable-next-line no-unused-vars
 const handleCheckbox = (() => {
   form.parentAddressCheckbox.addEventListener('click', () => {
     form.parentAddress.toggleAttribute('hidden');
@@ -36,8 +37,7 @@ const handleCheckbox = (() => {
   form.tuitionPatronCheckbox.addEventListener('click', () => {
     form.tuitionPatronFirst.toggleAttribute('hidden');
     form.tuitionPatronLast.toggleAttribute('hidden');
+    form.tuitionAddress.toggleAttribute('hidden');
     form.tuitionPhoneEmail.toggleAttribute('hidden');
   });
 })();
-
-handleCheckbox();
