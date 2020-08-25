@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
+const helmet = require("helmet");
 const { readFile } = require("fs").promises;
 const path = require("path");
 const debug = require("debug")("http");
@@ -8,6 +9,8 @@ const debug = require("debug")("http");
 const app = express();
 
 /* eslint-disable no-debugger, no-console, consistent-return */
+
+app.use(helmet());
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")));
