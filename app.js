@@ -61,12 +61,8 @@ app.post("/sent", async (req, res) => {
     <li>Date of Birth: ${req.body.birthday}</li>
     <li>Address Line 1: ${req.body.address1}</li>
     <li>Address Line 2: ${req.body.address2}</li>
-    <li>Student's Cell Phone: ${req.body.phone}</li>
-    <li>Student's Email: ${req.body.email}</li>
     <li>Last Grade Completed: ${req.body.grade}</li>
     <li>Last School: ${req.body.school}</li>
-    <li>Allergies: ${req.body.allergies}</li>
-    <li>Medicines: ${req.body.medicines}</li>
   </ul>
   
   <h3 style="color: #9c79e4;">Parent/Guardian Info</h3>
@@ -75,9 +71,7 @@ app.post("/sent", async (req, res) => {
     <li>Last Name: ${req.body["plast-name"]}</li>
     <li>Address Line 1: ${req.body.sameaddress === 'on' ? req.body.address1 : req.body.paddress1}</li>
     <li>Address Line 2: ${req.body.sameaddress === 'on' ? req.body.address2 : req.body.paddress2}</li>
-    <li>Cell Phone: ${req.body["pcell-phone"]}</li>
-    <li>Work Phone: ${req.body["pwork-phone"]}</li>
-    <li>Home Phone: ${req.body["phome-phone"]}</li>
+    <li>Phone: ${req.body["pcell-phone"]}</li>
     <li>Email: ${req.body.pemail}</li>
   </ul>
   
@@ -87,22 +81,17 @@ app.post("/sent", async (req, res) => {
     <li>Last Name: ${req.body.sametuition === 'on' ? req.body["plast-name"] : req.body["tlast-name"]}</li>
     <li>Address Line 1: ${req.body.sametuition === 'on' ? (req.body.address1 || req.body.paddress1) : req.body.taddress1}</li>
     <li>Address Line 1: ${req.body.sametuition === 'on' ? (req.body.address2 || req.body.paddress2) : req.body.taddress2}</li>
-    <li>Cell Phone: ${req.body.sametuition === 'on' ? req.body["pcell-phone"] || req.body["pwork-phone"] || req.body["phome-phone"] : req.body["tcell-phone"]}</li>
+    <li>Phone: ${req.body.sametuition === 'on' ? req.body["pcell-phone"] || req.body["pwork-phone"] || req.body["phome-phone"] : req.body["tcell-phone"]}</li>
     <li>Email: ${req.body.sametuition === 'on' ? req.body.pemail : req.body.temail}</li>
-  </ul>
-  
-  <h3 style="color: #9c79e4;">Student Pickup</h3>
-  <ul style="list-style-type: none;">
-    <li>People Permitted to Pickup: ${req.body.pickup}</li>
   </ul>
   
   <h3 style="color: #9c79e4;">Additional Info</h3>
   <ul style="list-style-type: none;">
-    <li><strong>Describe Your Student's Strengths and Weaknesses:</strong><br><br>${req.body.strengths}</li>
+    <li><strong>What interests you about our program? What do you hope your child will gain from NPCS?:</strong><br><br>${req.body.interest}</li>
     <br>
-    <li><strong>Why are you interested in enrolling your student in this program?:</strong><br><br>${req.body.interest}</li>
+    <li><strong>Describe your student’s academic and personal strengths:</strong><br><br>${req.body.strengths}</li>
     <br>
-    <li><strong>What are you hoping your child will get out of their time at NPCS?:</strong><br><br>${req.body.hope}</li>
+    <li><strong>Describe your student’s academic and personal weaknesses:</strong><br><br>${req.body.weaknesses}</li>
     <br>
     <li><strong>NPCS is a teacher-parent partnership. How will you keep your child on track in their studies on the days they are not on campus?:</strong><br><br>${req.body.partnership}</li>
   </ul>
