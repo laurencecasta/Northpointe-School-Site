@@ -119,7 +119,7 @@ app.post("/sent", async (req, res) => {
   // setup email data with unicode symbols
   const mailOptions = {
     from: '"NPCS Application Email" <laurence.d.castaneda@gmail.com>', // sender address
-    to: "laurence@theexchangechurch.org", // list of receivers
+    to: "laurence@theexchangechurch.org, makayla@theexchangechurch.org", // list of receivers
     subject: `NPCS Application from ${req.body["first-name"]} ${req.body["last-name"]}`, // Subject line
     text: "", // plain text body
     html: output, // html body
